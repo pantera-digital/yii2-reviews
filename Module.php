@@ -4,8 +4,6 @@ namespace pantera\reviews;
 
 class Module extends \yii\base\Module
 {
-    public $reviewAdminClasses = [];
-
     public static function ratingLabel($rating)
     {
         if ($rating < 2) {

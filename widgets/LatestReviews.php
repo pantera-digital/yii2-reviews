@@ -24,7 +24,12 @@ class LatestReviews extends Widget
         $dataProvider->query->limit(2);
         return $this->render('latest-reviews-list', [
             'dataProvider' => $dataProvider,
-            'entityMdel' => $this->model,
         ]);
+    }
+
+    public function init()
+    {
+        parent::init();
+        LastReviewsAsset::register($this->view);
     }
 }

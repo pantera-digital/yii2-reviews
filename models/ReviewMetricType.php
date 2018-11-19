@@ -19,7 +19,7 @@ class ReviewMetricType extends \yii\db\ActiveRecord
      */
     public static function tableName()
     {
-        return 'lumi_review_metric_types';
+        return '{{%review_metric_types}}';
     }
 
 

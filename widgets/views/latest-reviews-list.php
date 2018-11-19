@@ -43,7 +43,7 @@ use pantera\reviews\Module;
     <?php endif; ?>
 <?php endforeach; ?>
 <?php if ($dataProvider->totalCount) : ?>
-    <a href="#reviews" class="pull-right" STYLE="margin-top:10px; margin-bottom:10px; display:block">
+    <a href="#reviews" class="pull-right" style="margin-top:10px; margin-bottom:10px; display:block">
         <b>
             Остальные отзывы &raquo;
         </b>

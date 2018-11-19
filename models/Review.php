@@ -13,6 +13,10 @@ namespace pantera\reviews\models;
  * @property string $model_id Идентификатор модели к которой оставлен отзыв
  *
  * @property ReviewMetric[] $reviewMetrics
+ * @property bool $status [tinyint(3) unsigned]  Статус публикации отзыва
+ * @property int $likes [int(11) unsigned]  Лайки отзыва
+ * @property int $dislikes [int(11) unsigned]  Дизлайки отзыва
+ * @property int $created_at [timestamp]  Отзыв создан
  */
 class Review extends \yii\db\ActiveRecord
 {
@@ -23,7 +27,7 @@ class Review extends \yii\db\ActiveRecord
      */
     public static function tableName()
     {
-        return 'lumi_review';
+        return '{{%review}}';
     }
 
     /**
