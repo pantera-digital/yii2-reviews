@@ -1,1 +1,1 @@
-# yii2-reviews
+# Yii2 reviews module
