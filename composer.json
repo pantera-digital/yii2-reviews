@@ -1,0 +1,40 @@
+{
+  "name": "pantera-digital/yii2-seo",
+  "description": "Yii2 reviews module",
+  "keywords": [
+    "yii2",
+    "reviews",
+    "comments",
+    "discussion"
+  ],
+  "authors": [
+    {
+      "name": "webmayak",
+      "email": "web-mayak@mail.ru"
+    },
+    {
+      "name": "numkms",
+      "email": "numkms@gmail.com"
+    },
+    {
+      "name": "singletonn",
+      "email": "sopranowest@gmail.com"
+    }
+  ],
+  "homepage": "https://github.com/pantera-digital/yii2-reviews",
+  "type": "yii2-extension",
+  "minimum-stability": "dev",
+  "require": {
+    "php": ">=7.2",
+    "yiisoft/yii2": "*",
+    "yiisoft/yii2-bootstrap": "*"
+  },
+  "config": {
+    "process-timeout": 1800
+  },
+  "autoload": {
+    "psr-4": {
+      "pantera\\reviews\\": ""
+    }
+  }
+}
