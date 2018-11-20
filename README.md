@@ -32,12 +32,13 @@ php yii migrate
 ],
 ```
 Нужно добавить метрики по пути /admin/reviews/review-metric-type
+
 Можно добавлять отзывы по пути /admin/reviews/review
 ### Настройка фронта
 Добавить в конфиг
 ```
 'modules' => [
-    'review' => [
+    'reviews' => [
         'class' => \pantera\reviews\Module::class,
     ],
 ],

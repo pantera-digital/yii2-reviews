@@ -77,11 +77,12 @@ $metrics = $model->getReviewMetrics()->joinWith('type')->orderBy('type')->all();
     </div>
     <div class="col-md-12">
         <div class="rating-like-dislike text-right">
-            <a href="<?= Url::to(['/review/default/like', 'id' => $model->id]) ?>" class="btn btn-link btn-review-like">
+            <a href="<?= Url::to(['/reviews/default/like', 'id' => $model->id]) ?>"
+               class="btn btn-link btn-review-like">
                 <i class="fa fa-thumbs-up fa-fw"></i>
                 <span class="review-likes"><?= $model->likes ?></span>
             </a>
-            <a href="<?= Url::to(['/review/default/dislike', 'id' => $model->id]) ?>"
+            <a href="<?= Url::to(['/reviews/default/dislike', 'id' => $model->id]) ?>"
                class="btn btn-link btn-review-dislike">
                 <i class="fa fa-thumbs-down fa-fw"></i>
                 <span class="review-dislikes"><?= $model->dislikes ?></span>
