@@ -35,3 +35,23 @@ php yii migrate
 Можно добавлять отзывы по пути /admin/reviews/review
 ### Настройка фронта
 Добавить в конфиг
+```
+'modules' => [
+    'review' => [
+        'class' => \pantera\reviews\Module::class,
+    ],
+],
+```
+### Вывод
+Для вывода последних отзывов
+```
+<?=\pantera\reviews\widgets\LatestReviews::widget([
+    'model' => $model
+]) ?>
+```
+Для вывода списка всех отзывов
+```
+<?= \pantera\reviews\widgets\ReviewsList::widget([
+    'model' => $model,
+]) ?>
+```

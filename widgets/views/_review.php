@@ -1,9 +1,10 @@
 <?php
 
 use pantera\reviews\models\Review;
-use yii\web\View;
-use pantera\reviews\Module;
 use pantera\reviews\models\ReviewMetricType;
+use pantera\reviews\Module;
+use yii\helpers\Url;
+use yii\web\View;
 
 /* @var Review $model */
 /* @var $this View */
@@ -76,11 +77,14 @@ $metrics = $model->getReviewMetrics()->joinWith('type')->orderBy('type')->all();
     </div>
     <div class="col-md-12">
         <div class="rating-like-dislike text-right">
-            <a class="btn btn-link btn-review-like" data-review-id="<?= $model->id ?>">
-                <i class="fa fa-thumbs-up fa-fw"></i> <span class="review-likes"><?= $model->likes ?></span>
+            <a href="<?= Url::to(['/review/default/like', 'id' => $model->id]) ?>" class="btn btn-link btn-review-like">
+                <i class="fa fa-thumbs-up fa-fw"></i>
+                <span class="review-likes"><?= $model->likes ?></span>
             </a>
-            <a class="btn btn-link btn-review-dislike" data-review-id="<?= $model->id ?>">
-                <i class="fa fa-thumbs-down fa-fw"></i> <span class="review-dislikes"><?= $model->dislikes ?></span>
+            <a href="<?= Url::to(['/review/default/dislike', 'id' => $model->id]) ?>"
+               class="btn btn-link btn-review-dislike">
+                <i class="fa fa-thumbs-down fa-fw"></i>
+                <span class="review-dislikes"><?= $model->dislikes ?></span>
             </a>
         </div>
     </div>
