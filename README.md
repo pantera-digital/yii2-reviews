@@ -26,7 +26,10 @@ php yii migrate
     'reviews' => [
         'class' => \pantera\reviews\admin\Module::class,
         'reviewAdminClasses' => [
-            SampleClass::class => 'Названия',
+            SampleClass::class => [
+                'title' => 'Названия', //Имя как будет называется этот класс в списке
+                'value' => 'title', //Имя поля в модели возможно указать callback
+            ],
         ]
     ],
 ],

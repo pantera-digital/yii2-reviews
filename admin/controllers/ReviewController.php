@@ -58,7 +58,7 @@ class ReviewController extends Controller
         return [
             'load-models' => [
                 'class' => DepDropAction::class,
-                'outputCallback' => function ($selectedId, $params) {
+                'outputCallback' => function ($selectedId) {
                     /* @var $object ActiveRecord */
                     $object = Yii::createObject($selectedId);
                     $config = ArrayHelper::getValue($this->module->reviewAdminClasses, $selectedId);
