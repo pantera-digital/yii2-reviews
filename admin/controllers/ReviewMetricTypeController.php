@@ -2,21 +2,24 @@
 
 namespace pantera\reviews\admin\controllers;
 
-use Yii;
+use pantera\reviews\admin\Module;
 use pantera\reviews\models\ReviewMetricType;
 use pantera\reviews\models\ReviewMetricTypeSearch;
+use Yii;
 use yii\filters\AccessControl;
+use yii\filters\VerbFilter;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
-use yii\filters\VerbFilter;
 
 /**
  * ReviewMetricTypeController implements the CRUD actions for ReviewMetricType model.
  */
 class ReviewMetricTypeController extends Controller
 {
-
     public $layout = 'menu';
+    /* @var Module */
+    public $module;
+
     /**
      * {@inheritdoc}
      */
@@ -24,16 +27,16 @@ class ReviewMetricTypeController extends Controller
     {
         return [
             'access' => [
-                'class' => AccessControl::className(),
+                'class' => AccessControl::class,
                 'rules' => [
                     [
                         'allow' => true,
-                        'roles' => ['@'],
+                        'roles' => $this->module->permissions,
                     ],
                 ],
             ],
             'verbs' => [
-                'class' => VerbFilter::className(),
+                'class' => VerbFilter::class,
                 'actions' => [
                     'delete' => ['POST'],
                 ],
@@ -50,22 +53,10 @@ class ReviewMetricTypeController extends Controller
         $searchModel = new ReviewMetricTypeSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
+        /** @noinspection MissedViewInspection */
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
-        ]);
-    }
-
-    /**
-     * Displays a single ReviewMetricType model.
-     * @param string $id
-     * @return mixed
-     * @throws NotFoundHttpException if the model cannot be found
-     */
-    public function actionView($id)
-    {
-        return $this->render('view', [
-            'model' => $this->findModel($id),
         ]);
     }
 
@@ -79,9 +70,10 @@ class ReviewMetricTypeController extends Controller
         $model = new ReviewMetricType();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(['index']);
         }
 
+        /** @noinspection MissedViewInspection */
         return $this->render('create', [
             'model' => $model,
         ]);
@@ -99,9 +91,10 @@ class ReviewMetricTypeController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(['index']);
         }
 
+        /** @noinspection MissedViewInspection */
         return $this->render('update', [
             'model' => $model,
         ]);

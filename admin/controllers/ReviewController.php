@@ -36,7 +36,7 @@ class ReviewController extends Controller
                 'rules' => [
                     [
                         'allow' => true,
-                        'roles' => ['@'],
+                        'roles' => $this->module->permissions,
                     ],
                 ],
             ],
@@ -92,6 +92,7 @@ class ReviewController extends Controller
         $searchModel = new ReviewSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
+        /** @noinspection MissedViewInspection */
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
@@ -106,6 +107,7 @@ class ReviewController extends Controller
      */
     public function actionView($id)
     {
+        /** @noinspection MissedViewInspection */
         return $this->render('view', [
             'model' => $this->findModel($id),
         ]);
@@ -124,6 +126,7 @@ class ReviewController extends Controller
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
+        /** @noinspection MissedViewInspection */
         return $this->render('create', [
             'model' => $model,
             'module' => $this->module,
@@ -145,6 +148,7 @@ class ReviewController extends Controller
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
+        /** @noinspection MissedViewInspection */
         return $this->render('update', [
             'model' => $model,
             'module' => $this->module,
