@@ -39,6 +39,6 @@
     }
   },
   "extra": {
-    "bootstrap": "pantera\\content\\Bootstrap"
+    "bootstrap": "pantera\\reviews\\Bootstrap"
   }
 }
