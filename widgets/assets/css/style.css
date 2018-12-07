@@ -1,0 +1,164 @@
+.review-heading {
+    margin-top: 10px
+}
+
+.rating-string-name {
+    margin-right: 25px;
+}
+
+.rating-string {
+    width: 100%;
+    background: #e3e3e3;
+    height: 8px;
+}
+
+.rating-string--sm {
+    height: 4px;
+}
+
+.rating-string > div {
+    background: #0059a9;
+    height: 100%;
+}
+
+.other-review-link {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    display: block;
+    font-weight: bold;
+}
+
+.reviews-source-description {
+    width: 100%;
+    background: #0059a9;
+    padding: 13px;
+    margin-bottom: 11px;
+    color: white;
+    line-height: 1.6em;
+    border-radius: 3px;
+}
+
+.reviews-source-description a {
+    color: white;
+    font-weight: bold;
+}
+
+.review-name,
+.rating-stat_title {
+    font-size: 16px;
+}
+
+#reviews-grid .label {
+    line-height: 20px;
+}
+
+#reviews-grid {
+    padding-right: 8px;
+}
+
+.review-sorter {
+    margin-bottom: 20px;
+}
+
+.review-block {
+    margin-bottom: 15px;
+    border-bottom: 2px dashed #e3e3e3;
+    padding-bottom: 15px;
+}
+
+.reviews-grid-wrapper .review-block:last-child {
+    border-bottom: none;
+}
+
+.review-metric-wrap {
+    margin-top: 16px;
+    margin-bottom: 0;
+}
+
+.review-date {
+    position: absolute;
+    bottom: -12px;
+    font-size: 12px;
+}
+
+.review-heading .rating-string-value {
+    padding: 2px 6px;
+    background: #0059a9;
+    color: white;
+    border-radius: 5px;
+    display: block;
+    margin-bottom: 3px;
+    font-weight: bold;
+}
+
+.rating-value-label {
+    padding: 2px 6px;
+    border-radius: 5px;
+    display: block;
+    margin-bottom: 3px;
+    font-weight: bold;
+}
+
+.average-rate .rating-string-value {
+    padding: 6px 13px;
+    background: #0059a9;
+    color: white;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.btn-like,
+.btn-like:hover {
+    border: 1px blue solid;
+    margin-top: 5px;
+}
+
+.btn-dislike,
+.btn-dislike:hover {
+    border: 1px red solid;
+    margin-top: 5px;
+}
+
+.reviews-count {
+    font-weight: bold;
+    line-height: 18px;
+    font-size: 15px;
+    margin-bottom: 9px;
+    color: #bab9b9;
+}
+
+#reviews-summary {
+    margin-bottom: 20px;
+}
+
+.rating-string-wrap {
+    padding-bottom: 16px;
+    line-height: 27px;
+    width: 100%;
+}
+
+.rating-string-name--big {
+    font-weight: bold;
+    font-size: 31px;
+    margin-top: 7px;
+}
+
+.rating-string-name--bold {
+    font-weight: bold;
+}
+
+.review-mt-4 {
+    margin-top: 4px !important;
+}
+
+.review-fw-bold {
+    font-weight: bold !important;
+}
+
+.review-mt-16 {
+    margin-top: 16px !important;
+}
+
+.rating-like-dislike a:hover{
+    text-decoration: none;
+}

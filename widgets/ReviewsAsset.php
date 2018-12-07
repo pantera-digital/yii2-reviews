@@ -11,9 +11,13 @@ namespace pantera\reviews\widgets;
 use yii\web\AssetBundle;
 use yii\web\JqueryAsset;
 
-class LastReviewsAsset extends AssetBundle
+class ReviewsAsset extends AssetBundle
 {
     public $sourcePath = __DIR__ . '/assets';
+
+    public $css = [
+        'css/style.css',
+    ];
 
     public $js = [
         'js/script.js',

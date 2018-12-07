@@ -13,13 +13,10 @@ $metrics = $model->getReviewMetrics()->joinWith('type')->orderBy('type')->all();
 <div class="row">
     <div class="col-md-12">
         <div class="clearfix">
-            <div class="review-heading rating-string-wrap pull-left" style="
-            padding-bottom: 16px;
-            line-height: 27px;
-            width: 100%;">
+            <div class="review-heading rating-string-wrap pull-left">
                 <div class="clearfix">
                     <?php $averageRating = $model->getAverageRating() ?>
-                    <div class="rating-string-name pull-left" style="margin-right:25px;">
+                    <div class="rating-string-name pull-left">
                         <b><?= $model->name ?></b>
                         <div class="review-date">
                             <?= Yii::$app->formatter->asDate($model->created_at, 'long') ?>
@@ -34,8 +31,8 @@ $metrics = $model->getReviewMetrics()->joinWith('type')->orderBy('type')->all();
                         <?= Module::ratingLabel($averageRating) ?>
                     </div>
                 </div>
-                <div class="ratin-string" style="width:100%; background: #e3e3e3; height: 8px;">
-                    <div style="background: #0059a9; width: <?= 20 * $averageRating ?>%; height: 100%;"></div>
+                <div class="rating-string">
+                    <div style="width: <?= 20 * $averageRating ?>%;"></div>
                 </div>
             </div>
         </div>
@@ -55,10 +52,10 @@ $metrics = $model->getReviewMetrics()->joinWith('type')->orderBy('type')->all();
         <?php endforeach; ?>
     </div>
     <div class="col-md-4">
-        <div style="margin-top:16px">
+        <div class="review-mt-16">
             <?php foreach ($metrics as $metric) : ?>
                 <?php if ($metric->type->type == ReviewMetricType::TYPE_RATING) : ?>
-                    <div class="rating-string-wrap" style="padding-bottom:16px; line-height: 28px;">
+                    <div class="rating-string-wrap">
                         <div class="clearfix">
                             <div class="rating-string-name pull-left">
                                 <?= $metric->type->name ?>
@@ -67,8 +64,8 @@ $metrics = $model->getReviewMetrics()->joinWith('type')->orderBy('type')->all();
                                 <b><?= $metric->value ?></b>
                             </div>
                         </div>
-                        <div class="ratin-string" style="width:100%; background: #e3e3e3; height: 4px;">
-                            <div style="background: #0059a9; width: <?= 20 * $metric->value ?>%; height: 100%;"></div>
+                        <div class="rating-string">
+                            <div style="width: <?= 20 * $metric->value ?>%;"></div>
                         </div>
                     </div>
                 <?php endif; ?>

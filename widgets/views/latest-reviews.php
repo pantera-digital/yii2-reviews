@@ -1,9 +1,10 @@
 <?php
 
 use pantera\reviews\models\Review;
-use yii\web\View;
 use pantera\reviews\models\ReviewMetricType;
 use pantera\reviews\Module;
+use yii\helpers\StringHelper;
+use yii\web\View;
 
 /* @var $dataProvider \yii\data\ActiveDataProvider */
 /* @var $model Review */
@@ -20,10 +21,10 @@ use pantera\reviews\Module;
         ->one();
     ?>
     <?php if ($metric) : ?>
-        <div class="clearfix review-heading" style="margin-top:10px">
+        <div class="clearfix review-heading">
             <?php $averageRating = $model->getAverageRating() ?>
-            <div class="rating-string-name pull-left" style="margin-right:25px;">
-                <b><?= $model->name ?></b>
+            <div class="rating-string-name rating-string-name--bold pull-left">
+                <?= $model->name ?>
             </div>
             <div class="rating-string-value pull-right">
                 <b>
@@ -34,18 +35,16 @@ use pantera\reviews\Module;
                 <?= Module::ratingLabel($averageRating) ?>
             </div>
         </div>
-        <div class="rating-string" style="width:100%; background: #e3e3e3; height: 8px;">
-            <div style="background: #0059a9; width: <?= 20 * $averageRating ?>%; height: 100%;"></div>
+        <div class="rating-string">
+            <div style="width: <?= 20 * $averageRating ?>%;"></div>
         </div>
-        <div style="margin-top:4px;">
-            <?= \yii\helpers\StringHelper::truncate($metric->value, 190, '...') ?>
+        <div class="review-mt-4">
+            <?= StringHelper::truncate($metric->value, 190) ?>
         </div>
     <?php endif; ?>
 <?php endforeach; ?>
 <?php if ($dataProvider->totalCount) : ?>
-    <a href="#reviews" class="pull-right" style="margin-top:10px; margin-bottom:10px; display:block">
-        <b>
-            Остальные отзывы &raquo;
-        </b>
+    <a href="#reviews" class="pull-right other-review-link">
+        Остальные отзывы &raquo;
     </a>
 <?php endif; ?>

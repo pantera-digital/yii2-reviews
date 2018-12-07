@@ -17,13 +17,19 @@ class ReviewsList extends Widget
         $searchModel = new ReviewSearch();
         $dataProvider = $searchModel->search(\Yii::$app->request->getQueryParams());
         $dataProvider->query->andWhere([
-            'model_class' => $this->model::className(),
+            'model_class' => get_class($this->model),
             'model_id' => $this->model->getPrimaryKey(),
         ]);
-
+        /** @noinspection MissedViewInspection */
         return $this->render('reviews-list', [
             'dataProvider' => $dataProvider,
             'model' => $this->model,
         ]);
+    }
+
+    public function init()
+    {
+        parent::init();
+        ReviewsAsset::register($this->view);
     }
 }
