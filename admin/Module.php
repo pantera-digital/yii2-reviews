@@ -2,6 +2,7 @@
 
 namespace pantera\reviews\admin;
 
+use Yii;
 use yii\helpers\ArrayHelper;
 
 class Module extends \yii\base\Module
@@ -22,7 +23,7 @@ class Module extends \yii\base\Module
     public function getMenuItems()
     {
         return [
-            ['label' => 'Отзывы', 'url' => ['/reviews/review'], 'icon' => 'comments'],
+            ['label' => Yii::t('reviews', 'Reviews'), 'url' => ['/reviews/review'], 'icon' => 'comments'],
         ];
     }
 }

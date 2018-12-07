@@ -2,22 +2,23 @@
 
 namespace pantera\reviews;
 
+use Yii;
+
 class Module extends \yii\base\Module
 {
     public static function ratingLabel($rating)
     {
         if ($rating < 2) {
-            return 'Плохо';
+            return Yii::t('reviews', 'Badly');
         } elseif ($rating < 3) {
-            return 'Средне';
+            return Yii::t('reviews', 'Average');
         } elseif ($rating < 4) {
-            return 'Хорошо';
+            return Yii::t('reviews', 'Good');
         } elseif ($rating < 5) {
-            return 'Отлично';
+            return Yii::t('reviews', 'Fine');
         } elseif ($rating == 5) {
-            return 'Великолепно!';
+            return Yii::t('reviews', 'Sumptuously!');
         }
-
         return null;
     }
 }

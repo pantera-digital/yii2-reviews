@@ -10,12 +10,12 @@ $this->beginContent('@app/views/layouts/main.php');
 echo Tabs::widget([
     'items' => [
         [
-            'label' => 'Отзывы',
+            'label' => Yii::t('reviews', 'Reviews'),
             'url' => ['/reviews/review'],
             'active' => Yii::$app->controller->id == 'review',
         ],
         [
-            'label' => 'Метрики отзыва',
+            'label' => Yii::t('reviews', 'Review Metrics'),
             'url' => ['/reviews/review-metric-type'],
             'active' => Yii::$app->controller->id == 'review-metric-type',
         ],
