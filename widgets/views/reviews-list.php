@@ -1,19 +1,12 @@
 <?php
 
-use pantera\reviews\models\ReviewMetric;
-use pantera\reviews\models\ReviewMetricType;
-use yii\web\View;
 use pantera\reviews\Module;
 use pantera\reviews\widgets\RatingStatBlock;
+use yii\web\View;
 use yii\widgets\ListView;
 
 /* @var $this View */
-
-$averageRating = ReviewMetric::find()
-    ->joinWith(['type', 'review'])
-    ->andWhere(['model_class' => get_class($model), 'model_id' => $model->getPrimaryKey()])
-    ->andWhere(['type' => ReviewMetricType::TYPE_RATING])
-    ->average('value') ?: 0;
+/* @var $averageRating string */
 ?>
 <div class="reviews-list-widget" id="reviews">
     <div class="review-list-wrapper">
@@ -27,9 +20,9 @@ $averageRating = ReviewMetric::find()
                     <?php $revSort = Yii::$app->request->getQueryParam('reviews_sort'); ?>
                     <a class="<?= in_array($revSort, ['date', 'date_asc']) ? 'review-fw-bold' : '' ?>"
                        href="?reviews_sort=<?= $revSort == 'date' ? 'date_asc' : 'date' ?>">по дате</a> &nbsp;
-                    <a class="<?= in_array($revSort, ['rating_asc', 'rating']) ? 'eview-fw-bold' : '' ?>"
+                    <a class="<?= in_array($revSort, ['rating_asc', 'rating']) ? 'review-fw-bold' : '' ?>"
                        href="?reviews_sort=<?= $revSort == 'rating' ? 'rating_asc' : 'rating' ?>">по оценке</a> &nbsp;
-                    <a class="<?= in_array($revSort, ['liegs_asc', 'likes']) ? 'eview-fw-bold' : '' ?>"
+                    <a class="<?= in_array($revSort, ['liegs_asc', 'likes']) ? 'review-fw-bold' : '' ?>"
                        href="?reviews_sort=<?= $revSort == 'likes' ? 'likes_asc' : 'likes' ?>">по полезности</a> &nbsp;
                 </div>
             </div>

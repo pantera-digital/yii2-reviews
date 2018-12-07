@@ -1,14 +1,12 @@
 <?php
 
 use pantera\reviews\models\Review;
-use pantera\reviews\models\ReviewMetricType;
 use pantera\reviews\Module;
 use yii\helpers\Url;
 use yii\web\View;
 
 /* @var Review $model */
 /* @var $this View */
-$metrics = $model->getReviewMetrics()->joinWith('type')->orderBy('type')->all();
 ?>
 <div class="row">
     <div class="col-md-12">
@@ -38,37 +36,33 @@ $metrics = $model->getReviewMetrics()->joinWith('type')->orderBy('type')->all();
         </div>
     </div>
     <div class="col-md-8">
-        <?php foreach ($metrics as $metric) : ?>
-            <?php if ($metric->type->type == ReviewMetricType::TYPE_TEXT) : ?>
-                <div class="review-metric-wrap">
-                    <div class="review-metric-name">
-                        <b><?= $metric->type->name ?></b>
-                    </div>
-                    <div class="review-metric-text">
-                        <?= $metric->value ?>
-                    </div>
+        <?php foreach ($model->reviewMetricsTypeText as $metric) : ?>
+            <div class="review-metric-wrap">
+                <div class="review-metric-name">
+                    <b><?= $metric->type->name ?></b>
                 </div>
-            <?php endif; ?>
+                <div class="review-metric-text">
+                    <?= $metric->value ?>
+                </div>
+            </div>
         <?php endforeach; ?>
     </div>
     <div class="col-md-4">
         <div class="review-mt-16">
-            <?php foreach ($metrics as $metric) : ?>
-                <?php if ($metric->type->type == ReviewMetricType::TYPE_RATING) : ?>
-                    <div class="rating-string-wrap">
-                        <div class="clearfix">
-                            <div class="rating-string-name pull-left">
-                                <?= $metric->type->name ?>
-                            </div>
-                            <div class="rating-string-value pull-right">
-                                <b><?= $metric->value ?></b>
-                            </div>
+            <?php foreach ($model->reviewMetricsTypeRating as $metric) : ?>
+                <div class="rating-string-wrap">
+                    <div class="clearfix">
+                        <div class="rating-string-name pull-left">
+                            <?= $metric->type->name ?>
                         </div>
-                        <div class="rating-string">
-                            <div style="width: <?= 20 * $metric->value ?>%;"></div>
+                        <div class="rating-string-value pull-right">
+                            <b><?= $metric->value ?></b>
                         </div>
                     </div>
-                <?php endif; ?>
+                    <div class="rating-string">
+                        <div style="width: <?= 20 * $metric->value ?>%;"></div>
+                    </div>
+                </div>
             <?php endforeach; ?>
         </div>
     </div>

@@ -15,6 +15,8 @@ use Yii;
  * @property string $model_id Идентификатор модели к которой оставлен отзыв
  *
  * @property ReviewMetric[] $reviewMetrics
+ * @property ReviewMetric[] $reviewMetricsTypeText
+ * @property ReviewMetric[] $reviewMetricsTypeRating
  * @property bool $status [tinyint(3) unsigned]  Статус публикации отзыва
  * @property int $likes [int(11) unsigned]  Лайки отзыва
  * @property int $dislikes [int(11) unsigned]  Дизлайки отзыва
@@ -23,6 +25,34 @@ use Yii;
 class Review extends \yii\db\ActiveRecord
 {
     public $metrics = [];
+    /* @var bool|null|ReviewMetric */
+    private $firstMetricTypeText = false;
+
+    /**
+     * Получить первую местрику
+     * @param string|null $type Возможно указать тип нужной метрики
+     * @return ReviewMetric|null
+     */
+    public function getFirstMetric(?string $type = null): ?ReviewMetric
+    {
+        $query = $this->getReviewMetrics();
+        if ($type) {
+            $query->joinWith('type')->andWhere(['=', 'type', $type]);
+        }
+        return $query->one();
+    }
+
+    /**
+     * Получить первую текстовую метрику
+     * @return ReviewMetric|null
+     */
+    public function getFirstMetricTypeText(): ?ReviewMetric
+    {
+        if ($this->firstMetricTypeText === false) {
+            $this->firstMetricTypeText = $this->getFirstMetric(ReviewMetricType::TYPE_TEXT);
+        }
+        return $this->firstMetricTypeText;
+    }
 
     /**
      * {@inheritdoc}
@@ -114,5 +144,25 @@ class Review extends \yii\db\ActiveRecord
     public function getReviewMetrics()
     {
         return $this->hasMany(ReviewMetric::class, ['review_id' => 'id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getReviewMetricsTypeText()
+    {
+        return $this->hasMany(ReviewMetric::class, ['review_id' => 'id'])
+            ->joinWith(['type'])
+            ->andWhere(['=', ReviewMetricType::tableName() . '.type', ReviewMetricType::TYPE_TEXT]);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getReviewMetricsTypeRating()
+    {
+        return $this->hasMany(ReviewMetric::class, ['review_id' => 'id'])
+            ->joinWith(['type'])
+            ->andWhere(['=', ReviewMetricType::tableName() . '.type', ReviewMetricType::TYPE_RATING]);
     }
 }
