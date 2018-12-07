@@ -1,10 +1,13 @@
 <?php
 
+use pantera\reviews\admin\Module;
+use pantera\reviews\models\Review;
 use yii\helpers\Html;
 
 
 /* @var $this yii\web\View */
-/* @var $model rivership\modules\reviews\models\Review */
+/* @var $model Review */
+/* @var $module Module */
 
 $this->title = 'Create Review';
 $this->params['breadcrumbs'][] = ['label' => 'Reviews', 'url' => ['index']];
@@ -16,6 +19,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <?= $this->render('_form', [
         'model' => $model,
+        'module' => $module,
     ]) ?>
 
 </div>

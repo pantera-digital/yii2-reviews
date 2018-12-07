@@ -2,13 +2,19 @@
 
 namespace pantera\reviews\admin\controllers;
 
-use Yii;
+use kartik\depdrop\DepDropAction;
+use pantera\reviews\admin\Module;
 use pantera\reviews\models\Review;
 use pantera\reviews\models\ReviewSearch;
+use Yii;
+use yii\db\ActiveRecord;
 use yii\filters\AccessControl;
+use yii\filters\AjaxFilter;
+use yii\filters\VerbFilter;
+use yii\helpers\ArrayHelper;
+use yii\web\BadRequestHttpException;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
-use yii\filters\VerbFilter;
 
 /**
  * ReviewController implements the CRUD actions for Review model.
@@ -16,6 +22,8 @@ use yii\filters\VerbFilter;
 class ReviewController extends Controller
 {
     public $layout = 'menu';
+    /* @var Module */
+    public $module;
 
     /**
      * {@inheritdoc}
@@ -24,7 +32,7 @@ class ReviewController extends Controller
     {
         return [
             'access' => [
-                'class' => AccessControl::className(),
+                'class' => AccessControl::class,
                 'rules' => [
                     [
                         'allow' => true,
@@ -33,10 +41,44 @@ class ReviewController extends Controller
                 ],
             ],
             'verbs' => [
-                'class' => VerbFilter::className(),
+                'class' => VerbFilter::class,
                 'actions' => [
                     'delete' => ['POST'],
                 ],
+            ],
+            'ajax' => [
+                'class' => AjaxFilter::class,
+                'only' => ['load-models'],
+            ],
+        ];
+    }
+
+    public function actions()
+    {
+        return [
+            'load-models' => [
+                'class' => DepDropAction::class,
+                'outputCallback' => function ($selectedId, $params) {
+                    /* @var $object ActiveRecord */
+                    $object = Yii::createObject($selectedId);
+                    $config = ArrayHelper::getValue($this->module->reviewAdminClasses, $selectedId);
+                    if (!$config) {
+                        throw new BadRequestHttpException();
+                    }
+                    $models = $object::find()
+                        ->all();
+                    return ArrayHelper::getColumn($models, function (ActiveRecord $model) use ($config) {
+                        if (is_string($config['value'])) {
+                            $value = $model->{$config['value']};
+                        } else {
+                            $value = call_user_func($config['value'], $model);
+                        }
+                        return [
+                            'id' => $model->getPrimaryKey(),
+                            'name' => $value,
+                        ];
+                    });
+                }
             ],
         ];
     }
@@ -84,6 +126,7 @@ class ReviewController extends Controller
 
         return $this->render('create', [
             'model' => $model,
+            'module' => $this->module,
         ]);
     }
 
@@ -104,6 +147,7 @@ class ReviewController extends Controller
 
         return $this->render('update', [
             'model' => $model,
+            'module' => $this->module,
         ]);
     }
 
