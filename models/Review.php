@@ -40,7 +40,7 @@ class Review extends \yii\db\ActiveRecord
         return [
             [['user_id', 'model_id', 'likes', 'status', 'dislikes'], 'integer'],
             [['model_class', 'model_id'], 'required'],
-            [['_metrics', 'created_at'], 'safe'],
+            [['metrics', 'created_at'], 'safe'],
             [['email', 'name', 'model_class'], 'string', 'max' => 255],
         ];
     }
