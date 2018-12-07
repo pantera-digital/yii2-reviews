@@ -2,6 +2,8 @@
 
 namespace pantera\reviews\models;
 
+use Yii;
+
 /**
  * This is the model class for table "lumi_review".
  *
@@ -20,7 +22,7 @@ namespace pantera\reviews\models;
  */
 class Review extends \yii\db\ActiveRecord
 {
-    public $_metrics = [];
+    public $metrics = [];
 
     /**
      * {@inheritdoc}
@@ -50,11 +52,12 @@ class Review extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'user_id' => 'User ID',
-            'email' => 'Email',
-            'name' => 'Name',
-            'model_class' => 'Model Class',
-            'model_id' => 'Model ID',
+            'user_id' => Yii::t('reviews', 'User ID'),
+            'email' => Yii::t('reviews', 'Email'),
+            'name' => Yii::t('reviews', 'Name'),
+            'model_class' => Yii::t('reviews', 'Model Class'),
+            'model_id' => Yii::t('reviews', 'Model ID'),
+            'status' => Yii::t('reviews', 'Status'),
         ];
     }
 
@@ -83,13 +86,13 @@ class Review extends \yii\db\ActiveRecord
     protected function __fetchMetrics()
     {
         foreach ($this->getReviewMetrics()->all() as $reviewMetric) {
-            $this->_metrics[$reviewMetric->metric_type_id] = $reviewMetric->value;
+            $this->metrics[$reviewMetric->metric_type_id] = $reviewMetric->value;
         }
     }
 
     protected function __saveMetrics()
     {
-        foreach ($this->_metrics as $metric_type_id => $metric_value) {
+        foreach ($this->metrics as $metric_type_id => $metric_value) {
             $metric = ReviewMetric::findOne([
                 'review_id' => $this->id,
                 'metric_type_id' => $metric_type_id,

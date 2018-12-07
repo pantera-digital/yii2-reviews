@@ -23,14 +23,14 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'likes')->textInput(['maxlength' => true]) ?>
     <?= $form->field($model, 'dislikes')->textInput(['maxlength' => true]) ?>
     <?= $form->field($model, 'model_class')->dropDownList($module->getClassesList(), [
-        'prompt' => 'Выбрать тип отзыва',
+        'prompt' => Yii::t('reviews', 'Choose a review type'),
     ]) ?>
     <?= $form->field($model, 'model_id')->widget(DepDrop::class, [
         'options' => ['id' => 'subcat-id'],
         'type' => DepDrop::TYPE_SELECT2,
         'pluginOptions' => [
             'depends' => ['review-model_class'],
-            'placeholder' => 'Select...',
+            'placeholder' => Yii::t('reviews', 'Select...'),
             'url' => Url::to(['load-models']),
         ]
     ]); ?>
@@ -39,7 +39,7 @@ use yii\widgets\ActiveForm;
         'model' => $model
     ]) ?>
     <div class="form-group">
-        <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
+        <?= Html::submitButton(Yii::t('reviews', 'Save'), ['class' => 'btn btn-success']) ?>
     </div>
     <?php ActiveForm::end(); ?>
 </div>

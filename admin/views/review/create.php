@@ -4,13 +4,12 @@ use pantera\reviews\admin\Module;
 use pantera\reviews\models\Review;
 use yii\helpers\Html;
 
-
 /* @var $this yii\web\View */
 /* @var $model Review */
 /* @var $module Module */
 
-$this->title = 'Create Review';
-$this->params['breadcrumbs'][] = ['label' => 'Reviews', 'url' => ['index']];
+$this->title = Yii::t('reviews', 'Create Review');
+$this->params['breadcrumbs'][] = ['label' => Yii::t('reviews', 'Reviews'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="review-create">

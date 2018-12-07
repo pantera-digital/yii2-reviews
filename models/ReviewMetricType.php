@@ -2,6 +2,8 @@
 
 namespace pantera\reviews\models;
 
+use Yii;
+
 /**
  * This is the model class for table "lumi_review_metric_types".
  *
@@ -26,8 +28,8 @@ class ReviewMetricType extends \yii\db\ActiveRecord
     public static function getTypes()
     {
         return [
-            self::TYPE_RATING => 'Рейтинг (звездочки)',
-            self::TYPE_TEXT => 'Суждение (текст)'
+            self::TYPE_RATING => Yii::t('reviews', 'Rating (stars)'),
+            self::TYPE_TEXT => Yii::t('reviews', 'Judgment (text)'),
         ];
     }
 
@@ -50,8 +52,8 @@ class ReviewMetricType extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'name' => 'Название',
-            'type' => 'Тип оценки',
+            'name' => Yii::t('reviews', 'Name'),
+            'type' => Yii::t('reviews', 'Type of assessment'),
         ];
     }
 }

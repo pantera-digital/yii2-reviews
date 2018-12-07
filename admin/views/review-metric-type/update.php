@@ -1,14 +1,17 @@
 <?php
 
+use pantera\reviews\models\ReviewMetricType;
 use yii\helpers\Html;
 
 /* @var $this yii\web\View */
-/* @var $model rivership\modules\reviews\models\ReviewMetricType */
+/* @var $model ReviewMetricType */
 
-$this->title = 'Update Review Metric Type: ' . $model->name;
-$this->params['breadcrumbs'][] = ['label' => 'Review Metric Types', 'url' => ['index']];
+$this->title = Yii::t('reviews', 'Update Review Metric Type: {NAME}', [
+    'NAME' => $model->name,
+]);
+$this->params['breadcrumbs'][] = ['label' => Yii::t('reviews', 'Review Metric Types'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->name, 'url' => ['view', 'id' => $model->id]];
-$this->params['breadcrumbs'][] = 'Update';
+$this->params['breadcrumbs'][] = Yii::t('reviews', 'Update');
 ?>
 <div class="review-metric-type-update">
 

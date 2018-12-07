@@ -1,13 +1,13 @@
 <?php
 
+use pantera\reviews\models\ReviewMetricType;
 use yii\helpers\Html;
 
-
 /* @var $this yii\web\View */
-/* @var $model rivership\modules\reviews\models\ReviewMetricType */
+/* @var $model ReviewMetricType */
 
-$this->title = 'Create Review Metric Type';
-$this->params['breadcrumbs'][] = ['label' => 'Review Metric Types', 'url' => ['index']];
+$this->title = Yii::t('reviews', 'Create Review Metric Type');
+$this->params['breadcrumbs'][] = ['label' => Yii::t('reviews', 'Review Metric Types'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="review-metric-type-create">

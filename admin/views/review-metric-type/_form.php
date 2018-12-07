@@ -1,10 +1,11 @@
 <?php
 
+use pantera\reviews\models\ReviewMetricType;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
-/* @var $model rivership\modules\reviews\models\ReviewMetricType */
+/* @var $model ReviewMetricType */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
@@ -12,9 +13,9 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
     <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
-    <?= $form->field($model, 'type')->dropDownList($model::getTypes(), ['prompt' => 'Выбрать тип оценки']) ?>
+    <?= $form->field($model, 'type')->dropDownList($model::getTypes(), ['prompt' => 'Select type of assessment']) ?>
     <div class="form-group">
-        <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
+        <?= Html::submitButton(Yii::t('reviews', 'Save'), ['class' => 'btn btn-success']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

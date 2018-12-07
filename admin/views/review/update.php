@@ -8,10 +8,12 @@ use yii\helpers\Html;
 /* @var $model Review */
 /* @var $module Module */
 
-$this->title = 'Update Review: ' . $model->name;
-$this->params['breadcrumbs'][] = ['label' => 'Reviews', 'url' => ['index']];
+$this->title = Yii::t('reviews', 'Update Review: {NAME}', [
+    'NAME' => $model->name,
+]);
+$this->params['breadcrumbs'][] = ['label' => Yii::t('reviews', 'Reviews'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->name, 'url' => ['view', 'id' => $model->id]];
-$this->params['breadcrumbs'][] = 'Update';
+$this->params['breadcrumbs'][] = Yii::t('reviews', 'Update');
 ?>
 <div class="review-update">
 
