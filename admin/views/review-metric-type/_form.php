@@ -13,7 +13,9 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
     <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
-    <?= $form->field($model, 'type')->dropDownList($model::getTypes(), ['prompt' => 'Select type of assessment']) ?>
+    <?= $form->field($model, 'type')->dropDownList($model::getTypes(), [
+        'prompt' => Yii::t('reviews', 'Select type of assessment')
+    ]) ?>
     <div class="form-group">
         <?= Html::submitButton(Yii::t('reviews', 'Save'), ['class' => 'btn btn-success']) ?>
     </div>
