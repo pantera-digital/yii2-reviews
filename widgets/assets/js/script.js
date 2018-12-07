@@ -44,7 +44,6 @@ $(document).on('click','.review-sorter a', function(e){
     e.preventDefault();
     var location = $(this).attr('href');
     $('.review-block').css('opacity','0.5');
-    console.log(location);
     history.pushState(null, '', location);
     $('.reviews-list-widget').load(location + ' .review-list-wrapper', function(){
         $('.review-block').css('opacity',1);

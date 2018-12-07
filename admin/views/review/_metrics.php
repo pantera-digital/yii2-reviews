@@ -23,7 +23,7 @@ use yii\web\View;
                         'type' => 'number',
                         'max' => 5,
                         'min' => 0,
-                        'placeholder' => 'От 1 до 5',
+                        'placeholder' => Yii::t('reviews', 'From 1 to 5'),
                     ])
                     ->label($metricType->name) ?>
             </div>
