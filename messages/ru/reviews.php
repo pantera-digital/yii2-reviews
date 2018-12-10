@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'badly' => 'Плохо',
+    'Badly' => 'Плохо',
     'Average' => 'Средне',
     'Good' => 'Хорошо',
     'Fine' => 'Отлично',
@@ -17,7 +17,7 @@ return [
     'Select type of assessment' => 'Выбрать тип оценки',
     'Review Metric Types' => 'Метрики',
     'Create Review Metric Type' => 'Добавить',
-    'Update Review Metric Type: {NAME}' => 'Редактировать {NAME}',
+    'Update Review Metric Type: {NAME}' => 'Редактировать: {NAME}',
     'Name' => 'Имя',
     'Type of assessment' => 'Тип оценки',
     'Rating (stars)' => 'Рейтинг (звездочки)',
