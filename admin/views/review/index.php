@@ -1,6 +1,7 @@
 <?php
 
 use pantera\reviews\models\ReviewSearch;
+use pheme\grid\ToggleColumn;
 use yii\grid\GridView;
 use yii\helpers\Html;
 use yii\widgets\Pjax;
@@ -32,7 +33,14 @@ $this->params['breadcrumbs'][] = $this->title;
             'email:email',
             'name',
             'model_class',
-            ['class' => 'yii\grid\ActionColumn'],
+            [
+                'class' => ToggleColumn::class,
+                'attribute' => 'status'
+            ],
+            [
+                'class' => 'yii\grid\ActionColumn',
+                'template' => '{update}{delete}',
+            ],
         ],
     ]); ?>
     <?php Pjax::end(); ?>

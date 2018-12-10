@@ -30,7 +30,8 @@
     "yiisoft/yii2-bootstrap": "*",
     "kartik-v/yii2-widget-depdrop": "@dev",
     "bower-asset/ladda": "1.0.0",
-    "bower-asset/growl": "*"
+    "bower-asset/growl": "*",
+    "pheme/yii2-toggle-column": "*"
   },
   "config": {
     "process-timeout": 1800

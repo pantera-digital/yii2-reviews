@@ -6,6 +6,7 @@ use kartik\depdrop\DepDropAction;
 use pantera\reviews\admin\Module;
 use pantera\reviews\models\Review;
 use pantera\reviews\models\ReviewSearch;
+use pheme\grid\actions\ToggleAction;
 use Yii;
 use yii\db\ActiveRecord;
 use yii\filters\AccessControl;
@@ -44,11 +45,12 @@ class ReviewController extends Controller
                 'class' => VerbFilter::class,
                 'actions' => [
                     'delete' => ['POST'],
+                    'toggle' => ['POST'],
                 ],
             ],
             'ajax' => [
                 'class' => AjaxFilter::class,
-                'only' => ['load-models'],
+                'only' => ['load-models', 'toggle'],
             ],
         ];
     }
@@ -56,6 +58,11 @@ class ReviewController extends Controller
     public function actions()
     {
         return [
+            'toggle' => [
+                'class' => ToggleAction::class,
+                'attribute' => 'status',
+                'modelClass' => Review::class,
+            ],
             'load-models' => [
                 'class' => DepDropAction::class,
                 'outputCallback' => function ($selectedId) {
@@ -100,20 +107,6 @@ class ReviewController extends Controller
     }
 
     /**
-     * Displays a single Review model.
-     * @param string $id
-     * @return mixed
-     * @throws NotFoundHttpException if the model cannot be found
-     */
-    public function actionView($id)
-    {
-        /** @noinspection MissedViewInspection */
-        return $this->render('view', [
-            'model' => $this->findModel($id),
-        ]);
-    }
-
-    /**
      * Creates a new Review model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
@@ -123,7 +116,7 @@ class ReviewController extends Controller
         $model = new Review();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(['index']);
         }
 
         /** @noinspection MissedViewInspection */
@@ -145,7 +138,7 @@ class ReviewController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(['index']);
         }
 
         /** @noinspection MissedViewInspection */
