@@ -76,7 +76,24 @@ class Review extends \yii\db\ActiveRecord
             [['metrics', 'created_at'], 'safe'],
             [['email', 'name', 'model_class'], 'string', 'max' => 255],
             [['email', 'name'], 'required', 'on' => self::SCENARIO_USER],
+            [['metrics'], 'validateMetric', 'on' => self::SCENARIO_USER],
         ];
+    }
+
+    /**
+     * Валидация полей метрик работает только на фронте
+     */
+    public function validateMetric()
+    {
+        $metrics = $this->metrics ?: [];
+        foreach ($metrics as $metricId => $metricValue) {
+            if (empty($metricValue)) {
+                $metric = ReviewMetricType::findOne($metricId);
+                $this->addError('metrics[' . $metricId . ']', Yii::t('yii', '{attribute} cannot be blank.', [
+                    'attribute' => $metric->name,
+                ]));
+            }
+        }
     }
 
     /**

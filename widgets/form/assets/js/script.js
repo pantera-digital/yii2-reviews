@@ -4,8 +4,7 @@ $(document).on('submit', '.review-form', function () {
     const modal = self.parents('.modal');
     btn.ladda();
     btn.ladda('start');
-    $.post(self.attr('action'), self.serialize()).always(function (result) {
-        btn.ladda('remove');
+    $.post(self.attr('action'), self.serialize()).done(function (result) {
         if (result.status) {
             $.growl.error({
                 title: '',
@@ -23,6 +22,8 @@ $(document).on('submit', '.review-form', function () {
                 style: 'error',
             });
         }
+    }).always(function () {
+        btn.ladda('remove');
     });
     return false;
 });
