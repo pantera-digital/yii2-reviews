@@ -30,6 +30,9 @@ class DefaultController extends Controller
     public function actionCreate()
     {
         $model = new Review();
+        if (!Yii::$app->user->isGuest) {
+            $model->user_id = Yii::$app->user->id;
+        }
         $model->setScenario(Review::SCENARIO_USER);
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             $result = [

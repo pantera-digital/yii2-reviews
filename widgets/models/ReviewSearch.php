@@ -34,10 +34,12 @@ class ReviewSearch extends Review
      */
     public function search(ActiveRecord $model)
     {
-        $query = Review::find()->andWhere([
-            'model_class' => get_class($model),
-            'model_id' => $model->getPrimaryKey(),
-        ]);
+        $query = Review::find()
+            ->isActive()
+            ->andWhere([
+                'model_class' => get_class($model),
+                'model_id' => $model->getPrimaryKey(),
+            ]);
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
             'pagination' => false,

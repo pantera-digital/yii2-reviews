@@ -5,7 +5,7 @@ namespace pantera\reviews\models;
 use Yii;
 
 /**
- * This is the model class for table "lumi_review".
+ * This is the model class for table "review".
  *
  * @property string $id
  * @property int $user_id Пользователь который оставил отзыв
@@ -30,6 +30,8 @@ class Review extends \yii\db\ActiveRecord
 
     /* @var string Сценарий */
     const SCENARIO_USER = 'user';
+    const STATUS_ACTIVE = 1;
+    const STATUS_NOT_ACTIVE = 0;
 
     /**
      * Получить первую местрику
@@ -157,6 +159,11 @@ class Review extends \yii\db\ActiveRecord
             $metric->value = $metric_value;
             $metric->save();
         }
+    }
+
+    public static function find()
+    {
+        return new ReviewQuery(get_called_class());
     }
 
     /**
