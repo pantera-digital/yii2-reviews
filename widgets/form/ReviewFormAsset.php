@@ -16,6 +16,7 @@ class ReviewFormAsset extends AssetBundle
 
     public $depends = [
         LaddaAsset::class,
+        GrowlAsset::class,
         BootstrapAsset::class,
         BootstrapPluginAsset::class,
     ];

@@ -28,6 +28,9 @@ class Review extends \yii\db\ActiveRecord
     /* @var bool|null|ReviewMetric */
     private $firstMetricTypeText = false;
 
+    /* @var string Сценарий */
+    const SCENARIO_USER = 'user';
+
     /**
      * Получить первую местрику
      * @param string|null $type Возможно указать тип нужной метрики
@@ -72,6 +75,7 @@ class Review extends \yii\db\ActiveRecord
             [['model_class', 'model_id'], 'required'],
             [['metrics', 'created_at'], 'safe'],
             [['email', 'name', 'model_class'], 'string', 'max' => 255],
+            [['email', 'name'], 'required', 'on' => self::SCENARIO_USER],
         ];
     }
 

@@ -1,19 +1,13 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: singletonn
- * Date: 11/20/18
- * Time: 12:26 PM
- */
 
 namespace pantera\reviews\controllers;
 
 use pantera\reviews\models\Review;
 use Yii;
 use yii\filters\AjaxFilter;
+use yii\filters\VerbFilter;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
-use function is_null;
 
 class DefaultController extends Controller
 {
@@ -21,10 +15,34 @@ class DefaultController extends Controller
     {
         return [
             [
+                'class' => VerbFilter::class,
+                'actions' => [
+                    'create' => ['POST'],
+                ],
+            ],
+            [
                 'class' => AjaxFilter::class,
-                'only' => ['like', 'dislike'],
+                'only' => ['like', 'dislike', 'create'],
             ],
         ];
+    }
+
+    public function actionCreate()
+    {
+        $model = new Review();
+        $model->setScenario(Review::SCENARIO_USER);
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            $result = [
+                'status' => true,
+                'message' => Yii::t('reviews', 'Thanks for your feedback'),
+            ];
+        } else {
+            $result = [
+                'status' => false,
+                'error' => $model->getFirstErrors() ? current($model->getFirstErrors()) : '',
+            ];
+        }
+        return $this->asJson($result);
     }
 
     public function actionLike($id)

@@ -52,7 +52,7 @@ class ReviewMetricType extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'name' => Yii::t('reviews', 'Name'),
+            'name' => Yii::t('reviews', 'Metric name'),
             'type' => Yii::t('reviews', 'Type of assessment'),
         ];
     }

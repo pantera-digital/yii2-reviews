@@ -51,6 +51,7 @@ class ReviewForm extends Widget
             Event::on(View::class, View::EVENT_END_BODY, function () {
                 Modal::begin([
                     'id' => $this->getId(),
+                    'header' => Yii::t('reviews', 'Add review'),
                 ]);
                 /** @noinspection MissedViewInspection */
                 echo $this->render('index', [
@@ -64,8 +65,9 @@ class ReviewForm extends Widget
     protected function initModel()
     {
         $model = new Review();
-        $model->model_class = get_class($model);
-        $model->model_id = $model->getPrimaryKey();
+        $model->model_class = get_class($this->model);
+        $model->model_id = $this->model->getPrimaryKey();
+        $model->setScenario(Review::SCENARIO_USER);
         return $model;
     }
 }

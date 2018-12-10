@@ -18,7 +18,7 @@ return [
     'Review Metric Types' => 'Метрики',
     'Create Review Metric Type' => 'Добавить',
     'Update Review Metric Type: {NAME}' => 'Редактировать {NAME}',
-    'Name' => 'Название',
+    'Name' => 'Имя',
     'Type of assessment' => 'Тип оценки',
     'Rating (stars)' => 'Рейтинг (звездочки)',
     'Judgment (text)' => 'Суждение (текст)',
@@ -29,4 +29,6 @@ return [
     'Status' => 'Статус',
     'Add review' => 'Добавить отзыв',
     'From 1 to 5' => 'От 1 до 5',
+    'Metric name' => 'Название метрики',
+    'Thanks for your feedback' => 'Спасибо за ваш отзыв',
 ];
