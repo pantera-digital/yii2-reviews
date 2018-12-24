@@ -6,22 +6,19 @@ use yii\web\View;
 /* @var $ratingStat array */
 ?>
 <div class="rating-stat">
-    <div class="reviews-count">
-        Оценки на основе <?= $count ?> отзывов
-    </div>
     <div class="rating-strings">
         <?php foreach ($ratingStat as $stat) : ?>
             <div class="rating-string-wrap">
-                <div class="clearfix">
-                    <div class="rating-string-name pull-left">
+                <div class="rating-string-wrap__header">
+                    <div class="rating-string-name">
                         <?= $stat['name'] ?>
                     </div>
-                    <div class="rating-string-value pull-right">
-                        <b><?= Yii::$app->formatter->asDecimal($stat['avg_value'], 1) ?></b>
+                    <div class="rating-string-value">
+                        <?= Yii::$app->formatter->asDecimal($stat['avg_value'], 1) ?>
                     </div>
                 </div>
                 <div class="rating-string rating-string--sm">
-                    <div style="width: <?= 20 * $stat['avg_value'] ?>%;"></div>
+                    <div class="rating-string__line" style="width: <?= 20 * $stat['avg_value'] ?>%;"></div>
                 </div>
             </div>
         <?php endforeach; ?>

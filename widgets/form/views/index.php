@@ -14,7 +14,6 @@ use yii\widgets\ActiveForm;
         'class' => 'review-form',
     ],
 ]) ?>
-
 <?= $form->field($model, 'email')->textInput([
     'type' => 'email',
 ]) ?>

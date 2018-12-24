@@ -9,27 +9,27 @@ use yii\web\View;
 /* @var $model Review */
 /* @var $this View */
 ?>
-    <h4>
-        Последние отзывы
-    </h4>
+<div class="m-lastest-reviews__title">
+    Последние отзывы
+</div>
 <?php foreach ($dataProvider->models as $model) : ?>
     <?php if ($model->getFirstMetricTypeText()) : ?>
-        <div class="clearfix review-heading">
+        <div class="review-heading">
             <?php $averageRating = $model->getAverageRating() ?>
-            <div class="rating-string-name rating-string-name--bold pull-left">
+            <div class="rating-string-name rating-string-name--bold">
                 <?= $model->name ?>
             </div>
-            <div class="rating-string-value pull-right">
+            <div class="rating-string-value">
                 <b>
                     <?= Yii::$app->formatter->asDecimal($averageRating, 1) ?>
                 </b>
             </div>
-            <div class="rating-value-label pull-right">
+            <div class="rating-value-label">
                 <?= Module::ratingLabel($averageRating) ?>
             </div>
         </div>
         <div class="rating-string">
-            <div style="width: <?= 20 * $averageRating ?>%;"></div>
+            <div class="rating-string__line" style="width: <?= 20 * $averageRating ?>%;"></div>
         </div>
         <div class="review-mt-4">
             <?= StringHelper::truncate($model->getFirstMetricTypeText()->value, 190) ?>
@@ -37,7 +37,7 @@ use yii\web\View;
     <?php endif; ?>
 <?php endforeach; ?>
 <?php if ($dataProvider->totalCount) : ?>
-    <a href="#reviews" class="pull-right other-review-link">
+    <a href="#reviews" class="other-review-link">
         Остальные отзывы &raquo;
     </a>
 <?php endif; ?>

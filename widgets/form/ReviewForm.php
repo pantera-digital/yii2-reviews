@@ -28,7 +28,7 @@ class ReviewForm extends Widget
         parent::run();
         if ($this->mode === self::MODE_MODAL) {
             return Html::a(Yii::t('reviews', 'Add review'), 'javascript:void(0)', [
-                'class' => 'btn btn-info',
+                'class' => 'new-reviews-link btn',
                 'data' => [
                     'target' => '#' . $this->getId(),
                     'toggle' => 'modal',
