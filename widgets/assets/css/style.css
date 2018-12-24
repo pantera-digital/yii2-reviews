@@ -268,7 +268,8 @@ a.new-reviews-link.btn:focus {
 
 .rating-like-dislike__link {
     color: #c0c0c0;
-    text-decoration: none
+    text-decoration: none;
+    margin-left: 9px;
 }
 
 .rating-like-dislike__link:hover,
@@ -296,6 +297,14 @@ a.new-reviews-link.btn:focus {
     font-weight: 400;
     font-size: 22px;
     margin-bottom: 10px;
+}
+
+.rating-like-dislike-dislikes {
+    color: #f81f1f
+}
+
+.rating-like-dislike-likes {
+    color: #298800
 }
 
 @media only screen and (min-width: 992px) {

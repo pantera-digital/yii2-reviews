@@ -9,10 +9,10 @@ const reviews = {
                 url:el.attr('href'),
                 success:function(data) {
                     if(data.status) {
-                        el.find('.review-likes').text(data.likes);
+                        el.find('.rating-like-dislike-likes').text(data.likes);
                         el.hasClass('liked') ? el.removeClass('liked') : el.addClass('liked');
-                        el.parents('.review-comments').find('.btn-review-dislike').removeClass('liked');
-                        el.parents('.review-comments').find('.review-dislikes').text(data.dislikes)
+                        el.parents('.rating-like-dislike').find('.btn-review-dislike').removeClass('liked');
+                        el.parents('.rating-like-dislike').find('.rating-like-dislike-dislikes').text(data.dislikes)
                     }
                 }
             });
@@ -25,10 +25,10 @@ const reviews = {
                 url:el.attr('href'),
                 success:function(data) {
                     if(data.status) {
-                        el.find('.review-dislikes').text(data.dislikes);
+                        el.find('.rating-like-dislike-dislikes').text(data.dislikes);
                         el.hasClass('liked') ? el.removeClass('liked') : el.addClass('liked');
-                        el.parents('.review-comments').find('.btn-review-like').removeClass('liked');
-                        el.parents('.review-comments').find('.review-likes').text(data.likes)
+                        el.parents('.rating-like-dislike').find('.btn-review-like').removeClass('liked');
+                        el.parents('.rating-like-dislike').find('.rating-like-dislike-likes').text(data.likes)
                     }
                 }
 
