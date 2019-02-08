@@ -4,7 +4,8 @@ namespace pantera\reviews\widgets;
 
 use pantera\reviews\models\ReviewMetric;
 use pantera\reviews\models\ReviewMetricType;
-use pantera\reviews\widgets\models\ReviewSearch;
+use pantera\reviews\models\ReviewSearchWidget;
+use Yii;
 use yii\base\Widget;
 use yii\db\ActiveRecord;
 
@@ -16,7 +17,9 @@ class ReviewsList extends Widget
     public function run()
     {
         parent::run();
-        $searchModel = new ReviewSearch();
+        $searchModel = new ReviewSearchWidget([
+            'sort' => Yii::$app->request->getQueryParam('reviews_sort'),
+        ]);
         $dataProvider = $searchModel->search($this->model);
         $averageRating = ReviewMetric::find()
             ->joinWith(['type', 'review'])

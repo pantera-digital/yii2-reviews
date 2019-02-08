@@ -17,7 +17,7 @@ use yii\web\View;
         </div>
     </div>
     <div class="rating-value-label">
-        <?= Yii::$app->formatter->asDecimal($averageRating, 0) ?>
+        <?= Yii::$app->formatter->asDecimal($averageRating, 1) ?>
     </div>
 </div>
 <div class="review-metric">
@@ -34,9 +34,10 @@ use yii\web\View;
 </div>
 <div class="review__bottom">
     <div class="review-date">
-        <?= Yii::$app->formatter->asDate($model->created_at, 'long') ?>
+        <?= Yii::$app->formatter->asDatetime($model->created_at, 'php:j F Y в H:i') ?>
     </div>
     <div class="rating-like-dislike">
+        <div class="rating-like-dislike__useful">Полезно?</div>
         <a href="<?= Url::to(['/reviews/default/like', 'id' => $model->id]) ?>"
            class="btn-review-like rating-like-dislike__link">
             <i class="fa fa-thumbs-up fa-fw"></i>

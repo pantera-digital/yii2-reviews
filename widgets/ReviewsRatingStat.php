@@ -8,7 +8,7 @@ use pantera\reviews\models\ReviewMetricType;
 use yii\base\Widget;
 use yii\db\ActiveRecord;
 
-class RatingStatBlock extends Widget
+class ReviewsRatingStat extends Widget
 {
     /** @var ActiveRecord */
     public $model;
@@ -34,7 +34,7 @@ class RatingStatBlock extends Widget
                 'model_id' => $this->model->getPrimaryKey(),
             ])->count() ?: 0;
         /** @noinspection MissedViewInspection */
-        return $this->render('rating-stat-block', [
+        return $this->render('reviews-rating-stat', [
             'ratingStat' => $ratingStat,
             'count' => $count
         ]);
