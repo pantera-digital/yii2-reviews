@@ -40,9 +40,9 @@ const reviews = {
 
 reviews.init();
 
-$(document).on('click','.review-sorter a', function(e){
+$(document).on('click','.review-sorter__link', function(e){
     e.preventDefault();
-    var location = $(this).attr('href');
+    var location = $(this).data('href');
     $('.review-block').css('opacity','0.5');
     history.pushState(null, '', location);
     $('.reviews-list-widget').load(location + ' .review-list-wrapper', function(){

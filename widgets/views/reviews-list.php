@@ -25,11 +25,11 @@ use yii\widgets\ListView;
                 <div class="review-sorter__links">
                 <?php $revSort = Yii::$app->request->getQueryParam('reviews_sort'); ?>
                     <a class="review-sorter__link <?= $revSort == 'date' ? 'review-sorter__link_asc ' : '' ?><?= in_array($revSort, ['date', 'date_asc']) ? 'review-sorter__link_active' : '' ?>"
-                       href="?reviews_sort=<?= $revSort == 'date' ? 'date_asc' : 'date' ?>">по дате</a>
+                       data-href="?reviews_sort=<?= $revSort == 'date' ? 'date_asc' : 'date' ?>" rel="nofollow">по дате</a>
                     <a class="review-sorter__link <?= $revSort == 'rating' ? 'review-sorter__link_asc ' : '' ?><?= in_array($revSort, ['rating_asc', 'rating']) ? 'review-sorter__link_active' : '' ?>"
-                       href="?reviews_sort=<?= $revSort == 'rating' ? 'rating_asc' : 'rating' ?>">по оценке</a>
+                       data-href="?reviews_sort=<?= $revSort == 'rating' ? 'rating_asc' : 'rating' ?>" rel="nofollow">по оценке</a>
                     <a class="review-sorter__link <?= $revSort == 'likes' ? 'review-sorter__link_asc ' : '' ?><?= in_array($revSort, ['likes_asc', 'likes']) ? 'review-sorter__link_active' : '' ?>"
-                       href="?reviews_sort=<?= $revSort == 'likes' ? 'likes_asc' : 'likes' ?>">по полезности</a>
+                       data-href="?reviews_sort=<?= $revSort == 'likes' ? 'likes_asc' : 'likes' ?>" rel="nofollow">по полезности</a>
                 </div>
             </div>
             <div class="row">
