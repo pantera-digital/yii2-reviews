@@ -36,6 +36,7 @@ use yii\web\View;
     <div class="review-date">
         <?= Yii::$app->formatter->asDatetime($model->created_at, 'php:j F Y в H:i') ?>
     </div>
+    <?php if ($this->context->withLikeDislike): ?>
     <div class="rating-like-dislike">
         <div class="rating-like-dislike__useful">Полезно?</div>
         <a href="<?= Url::to(['/reviews/default/like', 'id' => $model->id]) ?>"
@@ -49,4 +50,5 @@ use yii\web\View;
             <span class="rating-like-dislike-dislikes"><?= $model->dislikes ?></span>
         </a>
     </div>
+    <?php endif; ?>
 </div>

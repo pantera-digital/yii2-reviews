@@ -14,6 +14,9 @@ class ReviewsList extends Widget
     /** @var ActiveRecord */
     public $model;
 
+    /** @var */
+    public $withLikeDislike = false;
+
     public function run()
     {
         parent::run();
